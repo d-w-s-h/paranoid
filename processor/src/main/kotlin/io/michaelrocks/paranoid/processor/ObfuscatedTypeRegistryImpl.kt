@@ -25,13 +25,13 @@ class ObfuscatedTypeRegistryImpl(
   private val classRegistry: ClassRegistry
 ) : ObfuscatedTypeRegistry {
 
-  override fun shouldObfuscate(type: Type.Object): Boolean {
+  override fun shouldObfuscate(global: Boolean, type: Type.Object): Boolean {
     val mirror = findClassMirror(type) ?: return false
     if (OBFUSCATE_TYPE in mirror.annotations) {
       return true
     }
 
-    return mirror.enclosingType?.let { shouldObfuscate(it) } ?: false
+    return mirror.enclosingType?.let { shouldObfuscate(global, it) } ?: false
   }
 
   private fun findClassMirror(type: Type.Object): ClassMirror? {

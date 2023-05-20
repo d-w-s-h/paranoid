@@ -24,9 +24,9 @@ class CachedObfuscatedTypeRegistry(
 
   private val cache = mutableMapOf<Type.Object, Boolean>()
 
-  override fun shouldObfuscate(type: Type.Object): Boolean {
+  override fun shouldObfuscate(global: Boolean, type: Type.Object): Boolean {
     return cache.getOrPut(type) {
-      registry.shouldObfuscate(type)
+      registry.shouldObfuscate(global, type)
     }
   }
 }

@@ -38,6 +38,7 @@ class ParanoidProcessor(
   private val bootClasspath: Collection<File>,
   private val projectName: String,
   private val asmApi: Int = Opcodes.ASM9,
+  private val global: Boolean,
 ) {
 
   private val logger = getLogger()
@@ -52,7 +53,7 @@ class ParanoidProcessor(
       "Input collection $inputs and output collection $outputs have different sizes"
     }
 
-    val analysisResult = Analyzer(grip).analyze(inputs)
+    val analysisResult = Analyzer(grip, global).analyze(inputs)
     analysisResult.dump()
 
     val deobfuscator = createDeobfuscator()

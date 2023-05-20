@@ -19,6 +19,7 @@ package io.michaelrocks.paranoid.plugin
 open class ParanoidExtension {
   var isEnabled: Boolean = true
   var isCacheable: Boolean = false
+  var global: Boolean = false
   var includeSubprojects: Boolean = false
   var obfuscationSeed: Int? = null
 }

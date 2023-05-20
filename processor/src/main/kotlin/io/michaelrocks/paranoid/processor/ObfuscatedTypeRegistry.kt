@@ -19,5 +19,5 @@ package io.michaelrocks.paranoid.processor
 import com.joom.grip.mirrors.Type
 
 interface ObfuscatedTypeRegistry {
-  fun shouldObfuscate(type: Type.Object): Boolean
+  fun shouldObfuscate(global: Boolean, type: Type.Object): Boolean
 }
